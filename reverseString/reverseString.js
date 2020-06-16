@@ -3,7 +3,12 @@ const reverseString = function(string) {
     beforeSort = Array.from(string)
     const length = beforeSort.length
     afterSort = []
-    
+
+    //this is probably not best practice
+    if (string = "") {
+        return ""
+    }
+
     /*
     console.log(beforeSort[0])
     console.log(beforeSort[1])
@@ -20,8 +25,9 @@ const reverseString = function(string) {
     console.log(afterSort[1])
     console.log(afterSort[2])
     */
-
+ 
     return afterSort.join("")
+    
 }
 
 module.exports = reverseString
