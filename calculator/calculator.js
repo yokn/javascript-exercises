@@ -21,7 +21,13 @@ function multiply(inputMultiply) {
         return inputMultiply.reduce(reducer);
 }
 
-function power() {}
+function power(x, y) {
+        let newX = x;
+        for (let i = 1; i < y; i++) {
+                newX *= x;
+        }
+        return newX;
+}
 
 function factorial() {}
 

@@ -49,7 +49,7 @@ describe('multiply', function() {
 });
 
 describe('power', function() {
-        xit('raises one number to the power of another number', function() {
+        it('raises one number to the power of another number', function() {
                 expect(calculator.power(4, 3)).toEqual(64); // 4 to third power is 64
         });
 });
