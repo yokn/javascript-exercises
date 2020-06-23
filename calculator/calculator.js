@@ -29,7 +29,14 @@ function power(x, y) {
         return newX;
 }
 
-function factorial() {}
+function factorial(inputFactorial) {
+        let result = 1;
+        const initialInput = inputFactorial;
+        for (let i = 1; i <= initialInput; i++) {
+                result *= i;
+        }
+        return result;
+}
 
 module.exports = {
         add,
