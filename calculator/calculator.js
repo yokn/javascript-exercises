@@ -6,15 +6,20 @@ function subtract(x, y) {
         return x - y;
 }
 
-function sum(inputSum) {
-        let total = 0;
-        for (let i = 0; i < inputSum.length; i++) {
-                total += inputSum[i];
+function sum(input) {
+        let totalSum = 0;
+        for (let i = 0; i < input.length; i++) {
+                totalSum += input[i];
         }
-        return total;
+        return totalSum;
 }
 
-function multiply() {}
+function multiply(inputMultiply) {
+        function reducer(accumulator, currentValue) {
+                return accumulator * currentValue;
+        }
+        return inputMultiply.reduce(reducer);
+}
 
 function power() {}
 
