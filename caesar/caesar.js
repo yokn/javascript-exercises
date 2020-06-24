@@ -4,8 +4,8 @@ const caesar = function(string, shiftAmount) {
         const alphabetUpperCase = Array.from('ABCDEFGHIJKLMNOPQRSTUVWXYZ');
         const alphabetLowerCase = Array.from('abcdefghijklmnopqrstuvwxyz');
         let splitString = [];
-        let output = '';
-        let charPos = 0;
+        const output = '';
+
         splitString = string.split('');
         console.log(`split string  = ${splitString}`);
 
@@ -14,33 +14,40 @@ const caesar = function(string, shiftAmount) {
         }
 
         function shifter(char, upperCase) {
+                let j = 0;
+                let charPos = 0;
                 if (upperCase === true) {
-                        for (let j = 0; j < 27; j++) {
+                        while (charPos === 0) {
                                 if (char === alphabetUpperCase[j]) {
                                         charPos = j + shiftAmount;
                                         console.log(charPos);
+                                        return alphabetUpperCase[charPos];
                                 }
+                                j++;
+                                console.log(j);
                         }
-                        return alphabetUpperCase[charPos];
                 }
-                for (let j = 0; j < 27; j++) {
+                while (charPos === 0) {
                         if (char === alphabetLowerCase[j]) {
                                 charPos = j + shiftAmount;
                                 console.log(charPos);
+
+                                return alphabetLowerCase[charPos];
                         }
-                        return alphabetLowerCase[charPos];
+                        j++;
+                        console.log(j);
                 }
         }
         function main() {
                 for (let i = 0; i < string.length; i++) {
                         if (/[A-Za-z]/.test(splitString[i])) {
-                                output += shifter(splitString[i], checkUpperCase(splitString[i]));
-
-                                // output = output.join('', '');
-                                console.log(`output = ${output}`);
+                                splitString[i] = shifter(splitString[i], checkUpperCase(splitString[i]));
+                                console.log(typeof splitString);
+                                // splitString = splitString.join('', '');
+                                console.log(`output = ${splitString}`);
                         }
                 }
-                return output;
+                return splitString;
         }
         return main();
 };
