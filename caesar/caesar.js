@@ -3,43 +3,54 @@
 const caesar = function(string, shiftAmount) {
         const alphabetUpperCase = Array.from('ABCDEFGHIJKLMNOPQRSTUVWXYZ');
         const alphabetLowerCase = Array.from('abcdefghijklmnopqrstuvwxyz');
-        let output = [];
-        let charPos;
+        let splitString = [];
+        let output = '';
+        let charPos = 0;
+        splitString = string.split('');
+        console.log(`split string  = ${splitString}`);
+
         function checkUpperCase(char) {
                 return char === char.toUpperCase();
         }
-        output = string.split('');
-        console.log(`split string  = ${output}`);
-        for (let i = 0; i < string.length; i++) {
-                if (/[A-Za-z]/.test(output[i])) {
-                        if (checkUpperCase(output[i]) === true) {
-                                for (let j = 0; j < 27; j++) {
-                                        if (output[i] === alphabetUpperCase[j]) {
-                                                charPos = j + shiftAmount;
-                                                console.log(charPos);
-                                        }
-                                }
-                                output[i] = alphabetUpperCase[charPos];
-                                console.log(`shifted string ${i}  = ${output}`);
-                        } else {
-                                for (let j = 0; j < 27; j++) {
-                                        if (output[i] === alphabetLowerCase[j]) {
-                                                charPos = j + shiftAmount;
-                                                console.log(charPos);
-                                        }
-                                        output[i] = alphabetLowerCase[charPos];
-                                        console.log(`shifted string ${i}  = ${output}`);
+
+        function shifter(char, upperCase) {
+                if (upperCase === true) {
+                        for (let j = 0; j < 27; j++) {
+                                if (char === alphabetUpperCase[j]) {
+                                        charPos = j + shiftAmount;
+                                        console.log(charPos);
                                 }
                         }
+                        return alphabetUpperCase[charPos];
+                }
+                for (let j = 0; j < 27; j++) {
+                        if (char === alphabetLowerCase[j]) {
+                                charPos = j + shiftAmount;
+                                console.log(charPos);
+                        }
+                        return alphabetLowerCase[charPos];
                 }
         }
-        output = output.join('', '');
-        console.log(`joined string  = ${output}`);
-        return output;
+        function main() {
+                for (let i = 0; i < string.length; i++) {
+                        if (/[A-Za-z]/.test(splitString[i])) {
+                                output += shifter(splitString[i], checkUpperCase(splitString[i]));
+
+                                // output = output.join('', '');
+                                console.log(`output = ${output}`);
+                        }
+                }
+                return output;
+        }
+        return main();
 };
 
 /*
-Take the string and the shift amount as input
-Shift the string */
+0 Take the string and the shift amount as input
+1 
+2 Shift the string 
+3 
+9 Return the string
+*/
 
 module.exports = caesar;
