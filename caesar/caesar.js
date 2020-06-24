@@ -5,6 +5,7 @@ const caesar = function(string, shiftAmount) {
         const alphabetLowerCase = Array.from('abcdefghijklmnopqrstuvwxyz');
         let splitString = [];
         const output = '';
+        let newArray = [];
 
         splitString = string.split('');
         console.log(`split string  = ${splitString}`);
@@ -43,11 +44,12 @@ const caesar = function(string, shiftAmount) {
                         if (/[A-Za-z]/.test(splitString[i])) {
                                 splitString[i] = shifter(splitString[i], checkUpperCase(splitString[i]));
                                 console.log(typeof splitString);
-                                // splitString = splitString.join('', '');
-                                console.log(`output = ${splitString}`);
+                                newArray = Array.from(splitString);
+                                newArray = newArray.join('', '');
+                                console.log(`output = ${newArray}`);
                         }
                 }
-                return splitString;
+                return newArray;
         }
         return main();
 };
