@@ -1,13 +1,13 @@
 const caesar = require('./caesar');
 
 describe('caesar', function() {
-        it('works with single letters', function() {
+        xit('works with single letters', function() {
                 expect(caesar('A', 1)).toEqual('B');
         });
-        it('works with words', function() {
+        xit('works with words', function() {
                 expect(caesar('Aaa', 1)).toEqual('Bbb');
         });
-        xit('works with phrases', function() {
+        it('works with phrases', function() {
                 expect(caesar('Hello, World!', 5)).toEqual('Mjqqt, Btwqi!');
         });
         xit('works with negative shift', function() {
