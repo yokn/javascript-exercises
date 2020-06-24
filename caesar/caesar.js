@@ -4,7 +4,6 @@ const caesar = function(string, shiftAmount) {
         const alphabetUpperCase = Array.from('ABCDEFGHIJKLMNOPQRSTUVWXYZ');
         const alphabetLowerCase = Array.from('abcdefghijklmnopqrstuvwxyz');
         let splitString = [];
-        const output = '';
         let newArray = [];
 
         splitString = string.split('');
@@ -17,24 +16,43 @@ const caesar = function(string, shiftAmount) {
         function shifter(char, upperCase) {
                 let j = 0;
                 let charPos = 0;
+                let over26 = 0;
                 if (upperCase === true) {
                         while (charPos === 0) {
+                                if (j + shiftAmount > 26) {
+                                        over26++;
+                                        console.log(`over26 count:${over26}`);
+                                }
                                 if (char === alphabetUpperCase[j]) {
-                                        charPos = j + shiftAmount;
+                                        if (j + shiftAmount > 26) {
+                                                console.log('Triggered me!!');
+                                                charPos -= 26 * over26;
+                                        }
+                                        charPos += j + shiftAmount;
                                         console.log(charPos);
                                         return alphabetUpperCase[charPos];
                                 }
+
                                 j++;
                                 console.log(j);
                         }
                 }
                 while (charPos === 0) {
+                        if (j + shiftAmount > 26) {
+                                over26++;
+                                console.log(`over26 count:${over26}`);
+                        }
                         if (char === alphabetLowerCase[j]) {
-                                charPos = j + shiftAmount;
+                                if (j + shiftAmount > 26) {
+                                        console.log('Triggered me!!');
+                                        console.log(`over26 count:${over26}`);
+                                        charPos -= 26 * over26;
+                                }
+                                charPos += j + shiftAmount;
                                 console.log(charPos);
-
                                 return alphabetLowerCase[charPos];
                         }
+
                         j++;
                         console.log(j);
                 }
@@ -44,6 +62,7 @@ const caesar = function(string, shiftAmount) {
                         if (/[A-Za-z]/.test(splitString[i])) {
                                 splitString[i] = shifter(splitString[i], checkUpperCase(splitString[i]));
                                 console.log(typeof splitString);
+                                // Apparently splitString is not a "real" string anymore so I have to do this
                                 newArray = Array.from(splitString);
                                 newArray = newArray.join('', '');
                                 console.log(`output = ${newArray}`);
