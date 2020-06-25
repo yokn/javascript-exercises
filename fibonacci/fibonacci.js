@@ -1,5 +1,11 @@
 const fibonacci = function(input) {
         if (input == Math.abs(input)) {
+                if (input == 1) {
+                        return 1;
+                }
+                if (input == 2) {
+                        return 1;
+                }
                 let n = 0;
                 let nPrev = 1;
                 let nOld = 1;
