@@ -24,11 +24,11 @@ const caesar = function(string, shiftAmount) {
                                 if (j + shiftAmount >= 26) {
                                         over26++;
                                         console.log(`over26 count: ${over26}`);
+                                        shiftAmount -= 26;
                                 }
                                 if (char === alphabetUpperCase[j]) {
                                         if (over26 > 0) {
                                                 console.log('Triggered me!!');
-                                                charPos -= 26 * over26;
                                         }
                                         charPos += j + shiftAmount;
                                         console.log(`charPos is ${charPos}`);
@@ -47,11 +47,11 @@ const caesar = function(string, shiftAmount) {
                         if (j + shiftAmount >= 26) {
                                 over26++;
                                 console.log(`over26 count: ${over26}`);
+                                shiftAmount -= 26;
                         }
                         if (char === alphabetLowerCase[j]) {
                                 if (over26 > 0) {
                                         console.log('Triggered me!!');
-                                        charPos -= 26 * over26;
                                 }
                                 charPos += j + shiftAmount;
                                 console.log(`charPos is ${charPos}`);
@@ -66,12 +66,13 @@ const caesar = function(string, shiftAmount) {
                         console.log(`j is: ${j}`);
                 }
         }
+
         function main() {
                 for (let i = 0; i < string.length; i++) {
                         if (/[A-Za-z]/.test(splitString[i])) {
                                 splitString[i] = shifter(splitString[i], checkUpperCase(splitString[i]));
                                 // console.log(typeof splitString);
-                                // Apparently splitString is not a "real" string anymore so I have to do this
+                                // Apparently splitString is not a "real" array anymore so I have to do this
                                 newArray = Array.from(splitString);
                                 newArray = newArray.join('', '');
                                 console.log(`output = ${newArray}`);
