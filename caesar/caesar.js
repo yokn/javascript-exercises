@@ -21,18 +21,18 @@ const caesar = function(string, shiftAmount) {
                 let over26 = 0;
                 if (upperCase === true) {
                         while (charPos === 0) {
-                                if (j + shiftAmount > 26) {
+                                if (j + shiftAmount >= 26) {
                                         over26++;
                                         console.log(`over26 count: ${over26}`);
                                 }
                                 if (char === alphabetUpperCase[j]) {
-                                        if (j + shiftAmount > 26) {
+                                        if (over26 > 0) {
                                                 console.log('Triggered me!!');
                                                 charPos -= 26 * over26;
                                         }
                                         charPos += j + shiftAmount;
                                         console.log(`charPos is ${charPos}`);
-                                        if (charPos > 0) {
+                                        if (charPos >= 0) {
                                                 return alphabetUpperCase[charPos];
                                         }
 
@@ -44,18 +44,18 @@ const caesar = function(string, shiftAmount) {
                         }
                 }
                 while (charPos === 0) {
-                        if (j + shiftAmount > 26) {
+                        if (j + shiftAmount >= 26) {
                                 over26++;
                                 console.log(`over26 count: ${over26}`);
                         }
                         if (char === alphabetLowerCase[j]) {
-                                if (j + shiftAmount > 26) {
+                                if (over26 > 0) {
                                         console.log('Triggered me!!');
                                         charPos -= 26 * over26;
                                 }
                                 charPos += j + shiftAmount;
                                 console.log(`charPos is ${charPos}`);
-                                if (charPos > 0) {
+                                if (charPos >= 0) {
                                         return alphabetLowerCase[charPos];
                                 }
 
