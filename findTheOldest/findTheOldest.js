@@ -7,7 +7,13 @@ const findTheOldest = function(input) {
                         console.log(`currentIndex: ${currentIndex}`);
                         console.log(`accumulator: ${accumulator}`);
                         console.log(currentValue);
-                        const currentValueAge = currentValue.yearOfDeath - currentValue.yearOfBirth;
+                        let currentValueAge;
+                        if (currentValue.yearOfDeath == undefined) {
+                                const date = new Date();
+                                currentValueAge = date.getFullYear() - currentValue.yearOfBirth;
+                        } else if (!(currentValue.yearOfDeath == undefined)) {
+                                currentValueAge = currentValue.yearOfDeath - currentValue.yearOfBirth;
+                        }
                         console.log(`currentValueAge: ${currentValueAge}`);
                         if (currentValueAge > accumulator) {
                                 accumulator = currentValueAge;
