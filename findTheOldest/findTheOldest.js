@@ -11,24 +11,24 @@ const findTheOldest = function(input) {
                         console.log(`currentValueAge: ${currentValueAge}`);
                         if (currentValueAge > accumulator) {
                                 accumulator = currentValueAge;
-                                result = currentValue.name;
+                                result = arr[currentIndex];
                                 console.log(`New result = ${result}`);
                         }
 
                         if (currentIndex == arr.length - 1) {
-                                console.log(result);
-                                console.log('triggered me');
-                                accumulator = result;
-                                console.log(accumulator);
-                                console.log('test');
-                                return accumulator;
+                                // console.log(result);
+                                // console.log('triggered me');
+                                // accumulator = result;
+                                // console.log(accumulator);
+                                // console.log('test');
+                                // return accumulator;
+                                return result;
                         }
                         console.log('here');
                         return accumulator;
                 }
         }
-        const people = {};
-        people.name = input.reduce(reducer, 0);
+        const people = input.reduce(reducer, 0);
         console.log(people);
         return people;
 };
